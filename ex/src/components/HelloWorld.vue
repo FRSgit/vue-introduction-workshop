@@ -8,20 +8,17 @@
     </p>
     <h3>Installed CLI Plugins</h3>
     <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript" target="_blank" rel="noopener">typescript</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router" target="_blank" rel="noopener">router</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-unit-jest" target="_blank" rel="noopener">unit-jest</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-e2e-cypress" target="_blank" rel="noopener">e2e-cypress</a></li>
+      <li><a :href="`${githubRootUrl}cli-plugin-babel`" target="_blank" rel="noopener">babel</a></li>
+      <li><a :href="`${githubRootUrl}cli-plugin-typescript`" @click.prevent="$emit('typescript-click')" target="_blank" rel="noopener">typescript</a></li>
+      <li><a :href="`${githubRootUrl}cli-plugin-router`" target="_blank" rel="noopener">router</a></li>
+      <li><a :href="`${githubRootUrl}cli-plugin-eslint`" target="_blank" rel="noopener">eslint</a></li>
+      <li><a :href="`${githubRootUrl}cli-plugin-unit-jest`" target="_blank" rel="noopener">unit-jest</a></li>
     </ul>
     <h3>Essential Links</h3>
     <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
+      <li v-for="(item, index) in essentialLinks" :key="index">
+        <a :href="item.link" target="_blank" rel="noopener">{{item.name}}</a>
+      </li>
     </ul>
     <h3>Ecosystem</h3>
     <ul>
@@ -42,6 +39,18 @@ export default Vue.extend({
   props: {
     msg: String,
   },
+  data() {
+    return {
+      githubRootUrl: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/',
+      essentialLinks: [
+        { link: 'https://vuejs.org', name: 'Core Docs' },
+        { link: 'https://forum.vuejs.org', name: 'Forum' },
+        { link: 'https://chat.vuejs.org', name: 'Community Chat' },
+        { link: 'https://twitter.com/vuejs', name: 'Twitter' },
+        { link: 'https://news.vuejs.org', name: 'News' },
+      ]
+    };
+  }
 });
 </script>
 
